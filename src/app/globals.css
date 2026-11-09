@@ -1,0 +1,516 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --royal-blue: #3568b5;
+  --royal-blue-dark: #28539b;
+  --royal-blue-mid: #6990cc;
+  --royal-blue-light: #a4bce2;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #28539b;
+  color: #ffffff;
+}
+
+body {
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes card-details-enter {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+    scale: 0.98;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+@keyframes card-details-exit {
+  from {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    translate: 0 6px;
+    scale: 0.99;
+  }
+}
+
+@keyframes module-form-backdrop-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes module-form-panel-enter {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+    scale: 0.98;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+  }
+}
+
+.module-form-backdrop {
+  animation: module-form-backdrop-enter 180ms ease-out both;
+}
+
+.module-form-panel {
+  animation: module-form-panel-enter 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.validation-entry-form {
+  animation: module-form-panel-enter 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.card-details-dialog[data-state="open"] {
+  animation: card-details-enter 240ms cubic-bezier(0.16, 1, 0.3, 1) both !important;
+}
+
+.card-details-dialog[data-state="closed"] {
+  animation: card-details-exit 160ms ease-in both !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .module-form-backdrop,
+  .module-form-panel,
+  .validation-entry-form,
+  .card-details-dialog[data-state="open"],
+  .card-details-dialog[data-state="closed"] {
+    animation-duration: 1ms !important;
+  }
+}
+
+.module-content h2:not([class*="text-white"]) {
+  color: #1d4ed8 !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.module-content h3:not([class*="text-white"]) {
+  color: #334155 !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+}
+
+.module-content :is(button, input, select, textarea, label, th, td, span) {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+.module-content p:not([class*="font-bold"]):not([class*="font-mono"]) {
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+}
+
+.module-content .inspection-results h2:not([class*="text-white"]) {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+}
+
+.module-content .inspection-results h3.inspection-road-name {
+  color: #0f172a !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+}
+
+.module-content .inspection-results article:hover h3.inspection-road-name,
+.module-content .inspection-results article:focus-within h3.inspection-road-name {
+  color: #1d4ed8 !important;
+}
+
+.module-content .inspection-results .inspection-road-category {
+  font-size: 0.875rem !important;
+}
+
+.module-content .inspection-results p.inspection-remarks {
+  font-size: 0.875rem !important;
+}
+
+.module-content .inspection-results .inspection-reference {
+  font-size: 0.875rem !important;
+}
+
+.module-content .inspection-results article .text-xs,
+.module-content .maintenance-management article .text-xs {
+  font-size: 0.75rem !important;
+}
+
+.module-content .inspection-results p.inspection-subtitle {
+  font-size: 0.875rem !important;
+}
+
+.module-content .maintenance-management h2.maintenance-card-title {
+  color: #0f172a !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+}
+
+.module-content .maintenance-management article:hover h2.maintenance-card-title,
+.module-content .maintenance-management article:focus-within h2.maintenance-card-title {
+  color: #1d4ed8 !important;
+}
+
+.module-content .road-project-card h2.road-project-title {
+  color: #0f172a !important;
+}
+
+.module-content .road-project-card:hover h2.road-project-title,
+.module-content .road-project-card:focus-within h2.road-project-title {
+  color: #1d4ed8 !important;
+}
+
+[class~="bg-[#1a1d3f]"] {
+  background-color: #28539b;
+}
+
+[class~="bg-[#0ea5e9]"] {
+  background-color: var(--royal-blue);
+}
+
+[class~="bg-[#0ea5e9]/10"] {
+  background-color: rgb(53 104 181 / 10%);
+}
+
+[class~="bg-[#0ea5e9]/20"] {
+  background-color: rgb(53 104 181 / 20%);
+}
+
+[class~="bg-[#0ea5e9]/30"] {
+  background-color: rgb(53 104 181 / 30%);
+}
+
+[class~="bg-[#0284c7]"] {
+  background-color: var(--royal-blue-dark);
+}
+
+[class~="bg-[#38bdf8]"] {
+  background-color: var(--royal-blue-mid);
+}
+
+[class~="bg-[#38bdf8]/10"] {
+  background-color: rgb(105 144 204 / 10%);
+}
+
+[class~="bg-[#38bdf8]/20"] {
+  background-color: rgb(105 144 204 / 20%);
+}
+
+[class~="bg-[#7dd3fc]"] {
+  background-color: var(--royal-blue-light);
+}
+
+[class~="bg-[#7dd3fc]/10"] {
+  background-color: rgb(164 188 226 / 10%);
+}
+
+[class~="bg-[#7dd3fc]/20"] {
+  background-color: rgb(164 188 226 / 20%);
+}
+
+[class~="bg-[#252847]"] {
+  background-color: #304f88;
+}
+
+[class~="bg-[#2a2d4f]"] {
+  background-color: #3d609d;
+}
+
+[class~="bg-[#1a1d3f]/50"] {
+  background-color: rgb(40 83 155 / 50%);
+}
+
+[class~="text-[#0ea5e9]"] {
+  color: var(--royal-blue);
+}
+
+[class~="text-[#0ea5e9]/70"] {
+  color: rgb(53 104 181 / 70%);
+}
+
+[class~="text-[#0284c7]"] {
+  color: var(--royal-blue-dark);
+}
+
+[class~="text-[#38bdf8]"] {
+  color: var(--royal-blue-mid);
+}
+
+[class~="text-[#7dd3fc]"] {
+  color: var(--royal-blue-light);
+}
+
+[class~="text-[#1a1d3f]"] {
+  color: #193d7d;
+}
+
+[class~="border-[#0ea5e9]"] {
+  border-color: var(--royal-blue);
+}
+
+[class~="border-[#0ea5e9]/30"] {
+  border-color: rgb(53 104 181 / 30%);
+}
+
+[class~="border-[#2a2d4f]"] {
+  border-color: #6282b5;
+}
+
+[class~="border-[#1a1d3f]/30"] {
+  border-color: rgb(40 83 155 / 30%);
+}
+
+[class~="border-[#0284c7]"] {
+  border-color: var(--royal-blue-dark);
+}
+
+[class~="border-[#38bdf8]"] {
+  border-color: var(--royal-blue-mid);
+}
+
+[class~="border-[#7dd3fc]"] {
+  border-color: var(--royal-blue-light);
+}
+
+[class~="ring-[#0ea5e9]"] {
+  --tw-ring-color: var(--royal-blue);
+}
+
+[class~="accent-[#0ea5e9]"] {
+  accent-color: var(--royal-blue);
+}
+
+[class~="hover:bg-[#0284c7]"]:hover {
+  background-color: var(--royal-blue-dark);
+}
+
+[class~="hover:text-[#0284c7]"]:hover {
+  color: var(--royal-blue-dark);
+}
+
+[class~="hover:bg-[#252847]"]:hover {
+  background-color: #304f88;
+}
+
+.form-modal-fields :is(input:not([type="file"]):not([type="radio"]):not([type="checkbox"]), select, textarea) {
+  border-color: #cbd5e1;
+  border-radius: 0.75rem;
+  background-color: #f8fafc;
+  color: #334155;
+}
+
+.mabini-login {
+  isolation: isolate;
+  background: #091b47;
+}
+
+.mabini-login__photo {
+  z-index: -3;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+.mabini-login__overlay {
+  z-index: -2;
+  background: linear-gradient(112deg, rgb(7 27 72 / 91%) 0%, rgb(13 49 123 / 86%) 48%, rgb(20 42 106 / 83%) 100%);
+  mix-blend-mode: multiply;
+}
+
+.mabini-login__glow {
+  z-index: -1;
+  background:
+    radial-gradient(ellipse at 76% 46%, rgb(53 112 255 / 24%), transparent 37%),
+    linear-gradient(180deg, rgb(11 33 83 / 13%), rgb(7 18 52 / 42%));
+  pointer-events: none;
+}
+
+.mabini-login__card {
+  background: linear-gradient(145deg, rgb(36 75 174 / 94%) 0%, rgb(29 66 157 / 96%) 49%, rgb(16 39 103 / 97%) 100%);
+  box-shadow: 0 24px 64px rgb(128 128 128 / 15%), 0 18px 60px rgb(3 13 40 / 25%);
+  backdrop-filter: blur(22px);
+}
+
+.mabini-login__card-shine {
+  background: linear-gradient(180deg, rgb(255 255 255 / 8%), transparent);
+  pointer-events: none;
+}
+
+@media (max-width: 639px) {
+  .mabini-login__photo {
+    background-position: 42% center;
+  }
+
+  .print-document {
+    display: none;
+  }
+}
+
+@media print {
+    @page {
+      size: 8.5in 13in;
+      margin: 14mm;
+    }
+
+    html,
+    body {
+      background: #fff !important;
+      color: #000 !important;
+    }
+
+    body * {
+      visibility: hidden !important;
+    }
+
+    .print-document,
+    .print-document * {
+      visibility: visible !important;
+      color: #000 !important;
+    }
+
+    .print-document {
+      display: block !important;
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      color: #000;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+      line-height: 1.35;
+    }
+
+    .print-official-header {
+      display: flex;
+      align-items: center;
+      min-height: 37mm;
+      border-bottom: 3px solid #000;
+      padding: 3mm 8mm;
+      text-align: center;
+    }
+
+    .print-official-copy {
+      flex: 1;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 13pt;
+      font-weight: 700;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .print-header-spacer {
+      min-height: 5mm !important;
+    }
+
+    .print-office {
+      font-size: 15pt;
+      letter-spacing: 0.02em;
+    }
+
+    .print-document-title {
+      margin: 10mm 0 2mm;
+      text-align: center;
+      font-size: 15pt;
+      font-weight: 700;
+    }
+
+    .print-reference {
+      margin-bottom: 6mm;
+      text-align: right;
+      font-size: 9pt;
+    }
+
+    .print-section {
+      margin-top: 6mm;
+      break-inside: auto;
+    }
+
+    .print-section h2 {
+      margin: 0 0 4mm;
+      padding-bottom: 2mm;
+      font-size: 13pt;
+      font-weight: 700;
+    }
+
+    .print-fields-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 4mm;
+    }
+
+    .print-field {
+      min-width: 0;
+      break-inside: avoid;
+    }
+
+    .print-field-half {
+      grid-column: span 6;
+    }
+
+    .print-field-full {
+      grid-column: span 12;
+    }
+
+    .print-field-third {
+      grid-column: span 4;
+    }
+
+    .print-field-quarter {
+      grid-column: span 3;
+    }
+
+    .print-field-label {
+      margin-bottom: 1.5mm;
+      font-size: 9pt;
+      font-weight: 600;
+    }
+
+    .print-field-value {
+      min-height: 10mm;
+      border: 1px solid #d1d5db;
+      padding: 2.5mm 3mm;
+      overflow-wrap: anywhere;
+    }
+
+    .print-attachment {
+      break-before: page;
+      break-inside: avoid;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 260mm;
+      min-height: 0;
+      margin-top: 0;
+    }
+
+    .print-attachment-image {
+      display: block;
+      width: 100%;
+      max-height: 260mm;
+      object-fit: contain;
+      border: 0;
+    }
+}
